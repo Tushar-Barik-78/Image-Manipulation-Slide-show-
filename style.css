@@ -1,0 +1,190 @@
+/* * Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f0f0f0;
+  min-height: 100vh;
+}
+h1 {
+  text-align: center;
+  padding: 30px 20px 20px;
+  font-size: 2.5rem;
+  background: linear-gradient(to right, #43cea2, #185a9d);
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Slideshow */
+.slideshow {
+  position: relative;
+  max-width: 40%;
+  margin: 40px auto;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+.slides {
+  display: flex;
+  width: 100%;
+  animation: slide 16s infinite backwards;
+}
+.slides img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+@keyframes slide {
+  0% {
+    transform: translateX(0%);
+  }
+  25% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-200%);
+  }
+  75% {
+    transform: translateX(-300%);
+  }
+  /* 80%  { transform: translateX(-400%); } */
+  100% {
+    transform: translateX(0%);
+  }
+}
+/* Dots Container */
+.dots {
+  text-align: center;
+  position: relative;
+  top: -30px;
+}
+
+/* Individual Dot */
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 6px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  position: relative;
+}
+
+/* Join dots with lines */
+.dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 18px;
+  height: 2px;
+  background-color: #bbb;
+  transform: translateY(-50%);
+}
+
+/* Remove the line after the last dot */
+.dot:last-child::after {
+  display: none;
+}
+
+/* Active Dot - highlight and line */
+@keyframes dotActive {
+  0%,
+  100% {
+    background-color: #070707;
+  }
+  25%,
+  75% {
+    background-color: #a4a4a4;
+  }
+}
+
+/* Animate dots based on slideshow timing */
+.dot:nth-child(1) {
+  animation: dotActive 16s linear infinite;
+  animation-delay: 0s;
+}
+.dot:nth-child(2) {
+  animation: dotActive 16s linear infinite;
+  animation-delay: 3s;
+}
+.dot:nth-child(3) {
+  animation: dotActive 16s linear infinite;
+  animation-delay: 6s;
+}
+.dot:nth-child(4) {
+  animation: dotActive 16s linear infinite;
+  animation-delay: 10s;
+}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1000px;
+}
+.gallery img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
+}
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Modal for Enlarged Images */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+}
+.modal img {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(255, 255, 255, 0.2);
+}
+.modal:target {
+  display: flex;
+}
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 35px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2rem;
+    padding: 20px;
+  }
+  .slides img {
+    height: 250px;
+  }
+}
